@@ -7,7 +7,7 @@ function createRequestListener(port) {
      * @param {ServerResponse} clientRes 
      */
     return async (clientReq, clientRes) => {
-        const info = `[request in ${port}] [x-forwarded-for=${clientReq.headers['x-forwarded-for']}] ${clientReq.method} ${clientReq.url}`;
+        const info = `[request in ${port}] ${clientReq.method} ${clientReq.url}`;
         console.log(info);
         clientRes.write(info);
         clientRes.end();

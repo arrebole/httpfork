@@ -12,9 +12,7 @@ const app = createServer(async (clientReq, clientRes) => {
   log(
     `[IN] ${clientReq.method} ${clientReq.url}`
   );
-  if (config.forwarded) {
-    clientReq.headers['x-forwarded-for'] = clientReq.socket.remoteAddress;
-  }
+
   for (const outbound of config.outbounds) {
     const options = {
       hostname: outbound.host,
