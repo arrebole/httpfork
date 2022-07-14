@@ -1,4 +1,5 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
+import config from '../config/config.json' assert { type: "json" };
 
 function createRequestListener(port) {
     /**
@@ -6,12 +7,13 @@ function createRequestListener(port) {
      * @param {ServerResponse} clientRes 
      */
     return async (clientReq, clientRes) => {
-        const info = `[request in ${port}] ${clientReq.method} ${clientReq.url}`;
+        const info = `[request in ${port}] [x-forwarded-for=${clientReq.headers['x-forwarded-for']}] ${clientReq.method} ${clientReq.url}`;
         console.log(info);
         clientRes.write(info);
         clientRes.end();
     }
 }
 
-createServer(createRequestListener(8080)).listen(8080, "0.0.0.0");
-createServer(createRequestListener(8081)).listen(8081, "0.0.0.0");
+for (const item of config.outbounds) {
+    createServer(createRequestListener(item.port)).listen(item.port, "0.0.0.0");
+}
