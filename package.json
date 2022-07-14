@@ -1,0 +1,19 @@
+{
+  "name": "httpfork",
+  "version": "0.1.0",
+  "description": "> 将 `http` 转发到多个服务器",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrebole/httpfork.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arrebole/httpfork/issues"
+  },
+  "homepage": "https://github.com/arrebole/httpfork#readme"
+}
